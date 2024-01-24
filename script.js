@@ -19,8 +19,12 @@ function reset() {
     p2Score = 0;
     p1Display.textContent = p1Score
     p2Display.textContent = p2Score
-    p1Display.classList.remove('winner', 'loser');
-    p2Display.classList.remove('winner', 'loser');
+    p1Display.classList.remove('has-text-success', 'has-text-danger');
+    p2Display.classList.remove('has-text-success', 'has-text-danger');
+    button1.disabled = false;
+    button2.disabled = false;
+
+
 
 }
 button1.addEventListener('click', () => {
@@ -28,8 +32,10 @@ button1.addEventListener('click', () => {
         p1Score += 1;
         if (p1Score === winningScore) {
             isGameOver = true;
-            p1Display.classList.add('winner');
-            p2Display.classList.add('loser');
+            p1Display.classList.add('has-text-success');
+            p2Display.classList.add('has-text-danger');
+            button1.disabled = true;
+            button2.disabled = true;
         }
         p1Display.textContent = p1Score;
     }
@@ -43,8 +49,10 @@ button2.addEventListener('click', () => {
         p2Score += 1;
         if (p2Score === winningScore) {
             isGameOver = true;
-            p2Display.classList.add('winner');
-            p1Display.classList.add('loser');
+            p2Display.classList.add('has-text-success');
+            p1Display.classList.add('has-text-danger');
+            button1.disabled = true;
+            button2.disabled = true;
         }
         p2Display.textContent = p2Score;
 
